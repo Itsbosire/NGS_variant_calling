@@ -50,6 +50,7 @@ Aggregate QC reports from FastQC, fastp, and other tools:
 
 ##### Project structure
 
+```
 .
 ├── data/                             # Raw data files (FASTQ)
 ├── reference/                        # Reference genome files (FASTA, index)
@@ -69,6 +70,5 @@ Aggregate QC reports from FastQC, fastp, and other tools:
 │   └── run_multiqc.sh                # Script to run MultiQC for QC aggregation
 └── README.md                         # Project overview and instructions
 
-
-
+```
 
