@@ -1,0 +1,66 @@
+# Tools used for the NGS pipeline
+
+# Quality control tools
+There are various tools that handle the Quality control of the sequences
+
+-FastQC: Provides a quality assessment report for raw sequencing reads. It checks base quality scores, GC content, adapter contamination, and other metrics.
+-fastp: Performs quality filtering, trimming of low-quality reads, and adapter removal. It also provides summary reports.
+-MultiQC: Aggregates results from various QC tools (e.g., FastQC) into a single, comprehensive report.
+
+# Read and trimming tools
+-Trimmomatic: A flexible read trimming tool that removes adapters and low-quality bases from Illumina NGS data.
+-fastp: Also supports adapter trimming and quality filtering, in addition to quality control (as mentioned above).
+-Cutadapt: Trims adapter sequences and low-quality regions from reads, supporting various sequencing technologies.
+
+# Read allignment
+These tools map raw reads to a reference genome, producing alignment files in SAM/BAM format.
+
+-BWA (Burrows-Wheeler Aligner): Widely used for mapping short reads to a reference genome.
+-Bowtie2: Another fast and memory-efficient tool for aligning reads to a reference genome.
+-HISAT2: Optimized for fast alignment of reads, especially for RNA-Seq data and spliced alignment.
+-STAR: A fast aligner commonly used for RNA-Seq data that supports spliced alignment.
+
+ # Post allignment
+ After alignment, processing tools clean up and prepare alignment files (BAM/SAM) for variant calling.
+
+-Samtools: Performs operations on SAM/BAM files, including sorting, indexing, and filtering.
+-Picard: Provides a set of tools for manipulating BAM files, including marking duplicates (MarkDuplicates), adding read groups, and other utilities.
+-GATK (Genome Analysis Toolkit): Specifically includes utilities for post-alignment processing, such as base quality score recalibration (BQSR) and duplicate marking, in addition to its variant calling functionality.
+
+# Variant calling
+These tools identify genomic variants such as SNPs (Single Nucleotide Polymorphisms), indels, and other structural variants.
+
+-GATK (HaplotypeCaller): A powerful tool for variant discovery, including SNPs and indels, that works well with germline and somatic variants.
+-bcftools: Works with samtools to call variants and manipulate VCF files.
+-FreeBayes: A haplotype-based variant detector for calling SNPs, indels, and complex variants
+
+# Variant filtering
+Variant Filtering
+Once variants are called, it is important to filter low-quality or false-positive variants.
+
+-GATK VariantFiltration: Allows filtering based on various criteria like quality scores, depth, and other metrics.
+-bcftools filter: Allows filtering variants in VCF files based on specified thresholds for quality, depth, etc.
+
+# Variant annotation
+Annotating variants helps interpret their biological significance, linking them to genes, known mutations, and functional consequences.
+
+-ANNOVAR: A widely used variant annotation tool that can annotate variants with gene information, functional impact, and known databases.
+-SnpEff: Annotates and predicts the effects of genetic variants on genes (e.g., whether they are missense, synonymous, etc.).
+-VEP (Variant Effect Predictor): A tool developed by Ensembl to predict the functional effects of variants.
+
+# Data visualization and summarization
+These tools are used to visualize sequencing results, variant distributions, and alignment statistics.
+
+-IGV (Integrative Genomics Viewer): A tool for visualizing alignment data, genomic variants, and annotations.
+-MultiQC: Generates summary reports of multiple QC and alignment tools.
+-vcfstats / bcftools stats: Generates statistical summaries and visualizations for VCF files.
+
+# Data management and automation
+Workflow management systems help automate the NGS pipeline and ensure reproducibility.
+
+-Snakemake: A Python-based workflow management system that allows you to automate complex NGS pipelines.
+-Nextflow: Another popular workflow system that supports parallel execution and scalable pipelines for high-throughput sequencing data.
+
+
+
+
